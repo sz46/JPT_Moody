@@ -2,6 +2,8 @@ using System.Collections.Generic;
 namespace Jpt.MoodyJapanese {
 public static partial class DisplayTranslation {
 static void Populate() {
+Texts.Add("Lock or unlock Moody position","JptMoody.PositionLock");
+AddRule("Moody.MoodyWindow+<>c::<DrawPositionLock>b__74_0","Lock or unlock Moody position",1,new int[]{0});
 Texts.Add("\n\nLeft click to toggle between ascending and descending sort. Right click to remove.","JptMoody.Text000");
 Texts.Add("ALL","JptMoody.Text001");
 Texts.Add("Add another skill column","JptMoody.Text002");
