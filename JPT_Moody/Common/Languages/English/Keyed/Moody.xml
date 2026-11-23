@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF8'?>
 <LanguageData>
+  <JptMoody.PositionLock>Lock or unlock Moody position</JptMoody.PositionLock>
   <JptMoody.Text000>
 
 Left click to toggle between ascending and descending sort. Right click to remove.</JptMoody.Text000>
