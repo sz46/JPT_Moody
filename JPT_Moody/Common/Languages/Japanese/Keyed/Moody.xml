@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF8'?>
 <LanguageData>
+  <JptMoody.PositionLock>Moodyウィンドウの位置固定を切り替えます</JptMoody.PositionLock>
   <!-- EN: 
 
 Left click to toggle between ascending and descending sort. Right click to remove. -->
