@@ -1,0 +1,25 @@
+[JPT] Moody 日本語翻訳 — ライセンスの適用範囲
+
+この翻訳MODのために独自に作成した表示補助コード, ビルドスクリプト,
+日本語翻訳への独自の追加, 説明文には, 公開者が権利を有する範囲で
+CC0 1.0 Universalを適用します. 全文はLICENSEを参照してください.
+
+原作Moody: Giant Space Hamster
+https://steamcommunity.com/sharedfiles/filedetails/?id=826998327
+
+Moodyの原作コード・英語原文・識別子・その他の第三者の素材に対し,
+本リポジトリが新たにCC0を適用したり, 原権利を放棄したりするものではありません.
+ソース中の照合用の英語文字列とXML中の原文コメントにもこの区別が適用されます.
+導入済み原作パッケージと閲覧できた作者の配布ページでは,
+継承元として確定できる明示的なコードライセンスは確認できませんでした.
+
+原作MoodyのDLL・画像・ソースコード本体は同梱していません.
+RimWorld本体およびHarmonyも別途入手してください.
+各第三者の権利・ライセンスはそれぞれの権利者に帰属します.
+
+CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+LICENSEの本文はSPDX license-list-dataのCC0-1.0.txtを使用しています.
+https://github.com/spdx/license-list-data/blob/main/text/CC0-1.0.txt
+
+本日本語翻訳MODと表示補助コードは, ChatGPT 6.1 Solに作成させたものです.

@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+**/Build16/
+**/TestHarness/
+*.pdb
+*.user
+*.suo
