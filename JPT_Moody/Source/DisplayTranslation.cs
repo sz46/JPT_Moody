@@ -43,7 +43,9 @@ namespace Jpt.MoodyJapanese
                 if (assembly == null) { Warn("Moody assembly not found; localization skipped."); return; }
                 Harmony harmony = new Harmony("jpt.giantspacehamster.moody.display");
                 HashSet<MethodBase> patched = new HashSet<MethodBase>();
-                foreach (string target in Rules.Keys)
+                foreach (string target in Rules.Keys.Concat(new[] {
+                    "Moody.Views.ThoughtsView::DrawThoughtGroupTable",
+                    "Moody.Table.Columns.ThoughtGroupColumn::CellRenderer" }).Distinct())
                 {
                     int split = target.LastIndexOf("::", StringComparison.Ordinal);
                     Type type = assembly.GetType(target.Substring(0, split), false);
@@ -77,6 +79,7 @@ namespace Jpt.MoodyJapanese
         {
             List<CodeInstruction> code = new List<CodeInstruction>(instructions);
             string target = __originalMethod.DeclaringType.FullName + "::" + __originalMethod.Name;
+            code = LocalizeDefinitionDisplay(code, target);
             List<Rule> rules;
             if (!Rules.TryGetValue(target, out rules)) return code;
             foreach (Rule rule in rules)
@@ -107,6 +110,84 @@ namespace Jpt.MoodyJapanese
             return output;
         }
         public static void DisplayResult(ref string __result) { __result = Localize(__result); }
+        // Only these three display sites read a defName as a caption. Settings and
+        // grouping continue to use the original Def objects and identifiers.
+        static List<CodeInstruction> LocalizeDefinitionDisplay(List<CodeInstruction> code, string target)
+        {
+            bool group = target == "Moody.Views.ThoughtsView::DrawThoughtGroupTable"
+                || target == "Moody.Table.Columns.ThoughtGroupColumn::CellRenderer";
+            bool skill = target == "Moody.Table.Columns.SkillSummaryColumn::.ctor";
+            if (!group && !skill) return code;
+            List<int> matches = new List<int>();
+            for (int i = 0; i < code.Count; i++)
+            {
+                FieldInfo field = code[i].operand as FieldInfo;
+                if (code[i].opcode != OpCodes.Ldfld || field == null || field.Name != "defName"
+                    || field.DeclaringType.FullName != "Verse.Def") continue;
+                if (group && (i + 1 >= code.Count || !(code[i + 1].operand is MethodInfo)
+                    || ((MethodInfo)code[i + 1].operand).Name != "FormatCamelCaseToSpaces")) continue;
+                matches.Add(i);
+            }
+            if (matches.Count != 1) { Warn("Definition display layout changed; retained: " + target); return code; }
+            int at = matches[0];
+            code[at] = new CodeInstruction(code[at]);
+            code[at].opcode = OpCodes.Call;
+            code[at].operand = AccessTools.Method(typeof(DisplayTranslation), group ? "ThoughtGroupName" : "SkillName");
+            if (group)
+            {
+                code[at + 1] = new CodeInstruction(code[at + 1]);
+                code[at + 1].opcode = OpCodes.Nop;
+                code[at + 1].operand = null;
+            }
+            return code;
+        }
+        static object ReadField(object value, string name)
+        { return value == null ? null : AccessTools.Field(value.GetType(), name).GetValue(value); }
+        static bool IsJapanese()
+        {
+            Type database = AccessTools.TypeByName("Verse.LanguageDatabase");
+            object language = AccessTools.Field(database, "activeLanguage").GetValue(null);
+            string folder = ReadField(language, "folderName") as string;
+            return folder != null && folder.StartsWith("Japanese", StringComparison.OrdinalIgnoreCase);
+        }
+        public static string SkillName(object def)
+        {
+            string original = ReadField(def, "defName") as string;
+            try
+            {
+                if (IsJapanese())
+                {
+                    string label = ReadField(def, "label") as string;
+                    if (!string.IsNullOrEmpty(label)) return label;
+                }
+            }
+            catch { }
+            return original;
+        }
+        public static string ThoughtGroupName(object def)
+        {
+            string original = ReadField(def, "defName") as string;
+            try
+            {
+                if (IsJapanese())
+                {
+                    string label = ReadField(def, "label") as string;
+                    if (!string.IsNullOrEmpty(label)) return label;
+                    // A group can contain several stages. Use its first named
+                    // stage as a representative caption, without changing its key.
+                    var stages = ReadField(def, "stages") as System.Collections.IEnumerable;
+                    if (stages != null) foreach (object stage in stages)
+                    {
+                        label = ReadField(stage, "label") as string;
+                        if (!string.IsNullOrEmpty(label)) return label;
+                    }
+                }
+                MethodInfo format = AccessTools.Method(AccessTools.TypeByName("Moody.Extensions.String"), "FormatCamelCaseToSpaces");
+                if (format != null) return (string)format.Invoke(null, new object[] { original });
+            }
+            catch { }
+            return original;
+        }
         public static string Localize(string original)
         {
             string key;
