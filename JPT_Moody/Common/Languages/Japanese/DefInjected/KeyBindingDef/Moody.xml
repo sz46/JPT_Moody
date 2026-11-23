@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF8'?>
+<LanguageData>
+  <!-- EN: Minimize -->
+  <Minimize.label>最小化</Minimize.label>
+  <!-- EN: Hide -->
+  <Hide.label>非表示</Hide.label>
+  <!-- EN: Tiny mode -->
+  <TinyMode.label>小型表示</TinyMode.label>
+  <!-- EN: Next pawn mode -->
+  <NextPawnMode.label>表示するポーンの切り替え</NextPawnMode.label>
+  <!-- EN: Next view -->
+  <NextView.label>表示画面の切り替え</NextView.label>
+</LanguageData>
