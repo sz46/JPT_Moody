@@ -9,7 +9,14 @@ namespace Jpt.MoodyJapanese
 {
     public sealed class JapaneseMod : Verse.Mod
     {
-        public JapaneseMod(Verse.ModContentPack pack) : base(pack) { DisplayTranslation.Install(); }
+        public JapaneseMod(Verse.ModContentPack pack) : base(pack)
+        {
+#if RIMWORLD16
+            Verse.LongEventHandler.ExecuteWhenFinished(DisplayTranslation.Install);
+#else
+            DisplayTranslation.Install();
+#endif
+        }
     }
 
     public static partial class DisplayTranslation
@@ -35,6 +42,14 @@ namespace Jpt.MoodyJapanese
         }
         public static void Install()
         {
+#if RIMWORLD16
+            if (!Verse.UnityData.IsInMainThread)
+            {
+                Warn("Display patch installation skipped outside the main thread.");
+                return;
+            }
+            Verse.Log.Message("[Moody Japanese] Installing 1.6 display patches on main thread; Harmony " + typeof(Harmony).Assembly.GetName().Version);
+#endif
             if (installed) return;
             installed = true;
             try
@@ -60,28 +75,70 @@ namespace Jpt.MoodyJapanese
                     {
                         if (!patched.Add(method) || method.GetMethodBody() == null) continue;
                         try { harmony.Patch(method, transpiler: new HarmonyMethod(typeof(DisplayTranslation), "Transpiler")); }
-                        catch (Exception e) { Warn("Display method skipped: " + target + ": " + e.GetType().Name); }
+                        catch (Exception e) {
+#if RIMWORLD16
+                            Warn("Display method skipped: " + target + ": " + e);
+#else
+                            Warn("Display method skipped: " + target + ": " + e.GetType().Name);
+#endif
+                        }
                     }
                 }
                 foreach (string target in new[] {
                     "Moody.Table.Column::get_Label", "Moody.Table.Column::get_Tooltip",
-                    "Moody.MoodyTab::get_Label", "Moody.Models.TemperatureBandInfo::get_Tooltip" })
+                    "Moody.MoodyTab::get_Label", "Moody.Models.TemperatureBandInfo::get_Tooltip"
+#if RIMWORLD16
+                    , "Moody.MoodyTab::<DrawTab>b__14_0"
+#endif
+                    })
                 {
                     int split = target.LastIndexOf("::", StringComparison.Ordinal);
                     Type type = assembly.GetType(target.Substring(0, split), false);
                     MethodInfo method = type == null ? null : AccessTools.Method(type, target.Substring(split + 2));
-                    if (method != null) harmony.Patch(method, postfix: new HarmonyMethod(typeof(DisplayTranslation), "DisplayResult"));
+                    if (method != null)
+                    {
+#if RIMWORLD16
+                        try { harmony.Patch(method, postfix: new HarmonyMethod(typeof(DisplayTranslation),
+                            target == "Moody.Table.Column::get_Tooltip" ? "DisplayTooltip" : "DisplayResult")); }
+                        catch (Exception e) { Warn("Display getter skipped: " + target + ": " + e); }
+#else
+                        harmony.Patch(method, postfix: new HarmonyMethod(typeof(DisplayTranslation), "DisplayResult"));
+#endif
+                    }
                 }
             }
             catch (Exception e) { Warn("Localization initialization failed: " + e); }
         }
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
         {
+#if RIMWORLD16
+            List<CodeInstruction> original = new List<CodeInstruction>(instructions);
+            try { return TranspileCore(original.Select(i => new CodeInstruction(i)), __originalMethod).ToList(); }
+            catch (Exception e)
+            {
+                Warn("Display transpiler failed; original retained: " + __originalMethod + ": " + e);
+                return original;
+            }
+#else
+            return TranspileCore(instructions, __originalMethod);
+#endif
+        }
+        static IEnumerable<CodeInstruction> TranspileCore(IEnumerable<CodeInstruction> instructions, MethodBase __originalMethod)
+        {
             List<CodeInstruction> code = new List<CodeInstruction>(instructions);
             string target = __originalMethod.DeclaringType.FullName + "::" + __originalMethod.Name;
+            #if !RIMWORLD16
             code = LocalizeDefinitionDisplay(code, target);
+#endif
             List<Rule> rules;
-            if (!Rules.TryGetValue(target, out rules)) return code;
+            if (!Rules.TryGetValue(target, out rules))
+            {
+#if RIMWORLD16
+                return LocalizeDefinitionDisplay(code, target);
+#else
+                return code;
+#endif
+            }
             foreach (Rule rule in rules)
             {
                 int count = code.Count(i => i.opcode == OpCodes.Ldstr && (i.operand as string) == rule.Text);
@@ -91,6 +148,9 @@ namespace Jpt.MoodyJapanese
                     return code;
                 }
             }
+            #if RIMWORLD16
+            code = LocalizeDefinitionDisplay(code, target);
+#endif
             Dictionary<string, int> occurrence = new Dictionary<string, int>(StringComparer.Ordinal);
             List<CodeInstruction> output = new List<CodeInstruction>();
             MethodInfo localize = AccessTools.Method(typeof(DisplayTranslation), "Localize");
@@ -110,6 +170,25 @@ namespace Jpt.MoodyJapanese
             return output;
         }
         public static void DisplayResult(ref string __result) { __result = Localize(__result); }
+#if RIMWORLD16
+        public static void DisplayTooltip(object __instance, ref string __result)
+        {
+            try
+            {
+                if (__instance != null && __instance.GetType().FullName == "Moody.Table.Columns.SkillSummaryColumn" && IsJapanese())
+                {
+                    object def = ReadField(__instance, "DisplaySkill");
+                    if (def != null)
+                    {
+                        __result = SkillName(def) + Localize("\n\nLeft click to toggle between ascending and descending sort. Right click to remove.");
+                        return;
+                    }
+                }
+                DisplayResult(ref __result);
+            }
+            catch (Exception e) { Warn("Cached tooltip localization failed: " + e); }
+        }
+#endif
         // Only these three display sites read a defName as a caption. Settings and
         // grouping continue to use the original Def objects and identifiers.
         static List<CodeInstruction> LocalizeDefinitionDisplay(List<CodeInstruction> code, string target)
@@ -142,7 +221,15 @@ namespace Jpt.MoodyJapanese
             return code;
         }
         static object ReadField(object value, string name)
-        { return value == null ? null : AccessTools.Field(value.GetType(), name).GetValue(value); }
+        {
+#if RIMWORLD16
+            if (value == null) return null;
+            FieldInfo field = AccessTools.Field(value.GetType(), name);
+            return field == null ? null : field.GetValue(value);
+#else
+            return value == null ? null : AccessTools.Field(value.GetType(), name).GetValue(value);
+#endif
+        }
         static bool IsJapanese()
         {
             Type database = AccessTools.TypeByName("Verse.LanguageDatabase");
@@ -207,8 +294,14 @@ namespace Jpt.MoodyJapanese
         }
         static void Warn(string message)
         {
+            #if RIMWORLD16
+            try {
+#endif
             Type log = AccessTools.TypeByName("Verse.Log");
             if (log != null) AccessTools.Method(log, "Warning", new[] { typeof(string) }).Invoke(null, new object[] { "[Moody Japanese] " + message });
+#if RIMWORLD16
+            } catch { /* Diagnostics must not interrupt game loading. */ }
+#endif
         }
     }
 }
