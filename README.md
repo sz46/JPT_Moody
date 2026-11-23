@@ -2,6 +2,8 @@
 
 RimWorld用MOD「Moody」の日本語翻訳です. 画面・設定・ツールチップ・チュートリアル・ショートカットを翻訳します.
 
+**2026-11-24更新: RimWorld 1.6での起動時クラッシュを修正しました.**
+
 ## ダウンロード
 
 **[日本語翻訳MODをダウンロード](dist/%5BJPT%5D%20Moody%20%E6%97%A5%E6%9C%AC%E8%AA%9E%E7%BF%BB%E8%A8%B3.zip?raw=true)**
@@ -36,7 +38,7 @@ GitHubの「Code → Download ZIP」を使った場合は, その中の `JPT_Moo
 ## ソースとビルド
 
 `JPT_Moody/Source` にC#ソースと `build.ps1` を収録しています. 詳細は [Source/README.txt](JPT_Moody/Source/README.txt) を参照してください.
-ゲーム本体とHarmonyは別途必要です. 原作DLL・ゲーム本体DLL・Harmony本体・コンパイル用スタブは配布物に含めていません.
+ゲーム本体とHarmonyは別途必要です. 原作DLL・ゲーム本体DLL・Harmony本体は配布物に含めていません.
 
 ## クレジット
 
