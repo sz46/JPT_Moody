@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF8'?>
+<LanguageData>
+  <!-- EN: Moody -->
+  <Moody.label>Moody</Moody.label>
+  <!-- EN: Moody provides six dashboards, or views, to help manage your colony. Colonist information is presented by default but the right-most icon along the top switches to prisoners and pets. Some column headers have context menus with additional options and most text and icons have tooltips to provide more detail.\n\nColonist selections are tracked in most views. You can <shift>+<click> to modify selections between the colonist bar, map, and Moody.\n\nSome persistent settings can be found in the mod options at Menu -> Options -> Mod Settings -> Moody. -->
+  <Moody.helpText>Moodyには,コロニーの管理に役立つ6種類の一覧画面があります.最初は入植者の情報が表示されますが,上部右端のアイコンで囚人やペットの表示へ切り替えられます.一部の列見出しには追加操作用の右クリックメニューがあり,ほとんどの文字やアイコンには詳細を示すツールチップがあります.
+
+多くの画面では,入植者の選択状態が連動します.&lt;shift&gt;+&lt;click&gt;で,入植者バー・マップ・Moodyの間で選択を変更できます.
+
+一部の設定は,メニュー -&gt; オプション -&gt; MOD設定 -&gt; Moodyから変更できます.</Moody.helpText>
+  <!-- EN: Moody Summary View -->
+  <Moody_SummaryView.label>Moody: 概要</Moody_SummaryView.label>
+  <!-- EN: Shows summaries for:\n- Job\n- Mood\n- Temperature\n- Health\n\nSorting by mood is determined by who is closest to break thresholds, not absolute mood value. -->
+  <Moody_SummaryView.helpText>次の情報をまとめて表示します.
+- 作業
+- 心情
+- 気温
+- 健康
+
+心情で並べ替える場合は,心情の値そのものではなく,精神崩壊のしきい値にどれだけ近いかが基準になります.</Moody_SummaryView.helpText>
+  <!-- EN: Moody Thought View -->
+  <Moody_ThoughtView.label>Moody: 心情要因</Moody_ThoughtView.label>
+  <!-- EN: Organize by thought or thought group. For example, 'Hot' and 'Extremely Hot' are two thoughts in the same thought group.\n\nShows the number of colonists and total mood adjustment for each thought or thought group across all colonists.\n\nClicking on a row expands it to show each affected colonist.\n\nThis view does not track colonist selections like the other views do. -->
+  <Moody_ThoughtView.helpText>心情要因または心情グループごとに情報をまとめます.例えば「暑い」と「とても暑い」は,同じグループに属する別々の心情要因です.
+
+各心情要因・グループについて,該当する入植者の人数と,全入植者の心情変化量の合計を表示します.
+
+行をクリックすると展開され,該当する入植者が表示されます.
+
+この画面は,ほかの画面と異なり,入植者の選択状態に連動しません.</Moody_ThoughtView.helpText>
+  <!-- EN: Moody Temperature View -->
+  <Moody_TemperatureView.label>Moody: 気温</Moody_TemperatureView.label>
+  <!-- EN: The floating blue label in the temperature column header indicates the current map's outdoor temperature.\n\nEach colonist's current temperature is indicated by a yellow tick mark inside their current band, which is highlighted with the band's color. -->
+  <Moody_TemperatureView.helpText>気温の列見出しに表示される青い数値は,現在のマップの屋外気温です.
+
+各入植者の現在の気温は,該当する温度帯の中の黄色い目盛りで示されます.現在の温度帯は,その帯の色で強調表示されます.</Moody_TemperatureView.helpText>
+  <!-- EN: Moody Skill View -->
+  <Moody_SkillView.label>Moody: スキル</Moody_SkillView.label>
+  <!-- EN: Customize which skills are displayed. Add a skill using the last column ('+' icon) and remove a skill by right clicking its column header. The first column always shows the currently equipped weapon and cannot be removed. -->
+  <Moody_SkillView.helpText>表示するスキルを変更できます.右端の列の「+」アイコンでスキルを追加し,列見出しの右クリックで削除します.先頭の列には現在装備している武器が常に表示され,削除できません.</Moody_SkillView.helpText>
+  <!-- EN: Moody Job View -->
+  <Moody_JobView.label>Moody: 作業</Moody_JobView.label>
+  <!-- EN: Displays the description of the current job for each colonist. -->
+  <Moody_JobView.helpText>各入植者が現在行っている作業の説明を表示します.</Moody_JobView.helpText>
+  <!-- EN: Moody Health View -->
+  <Moody_HealthView.label>Moody: 健康</Moody_HealthView.label>
+  <!-- EN: Displays health conditions for colonists. Additional filters to are available along the top of the table to show all conditions, only ones requiring immediate attention, or only chronic conditions that do not require immediate attention.\n\nTooltips on health status icons provide additional detail. -->
+  <Moody_HealthView.helpText>入植者の健康状態を表示します.表の上部で,すべての状態・すぐに対処が必要な状態・直ちに対処する必要のない慢性的な状態を切り替えられます.
+
+健康状態のアイコンにカーソルを合わせると,詳細な説明が表示されます.</Moody_HealthView.helpText>
+</LanguageData>
