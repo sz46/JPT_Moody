@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF8'?>
+<LanguageData>
+  <!-- EN: 
+
+Left click to toggle between ascending and descending sort. Right click to remove. -->
+  <JptMoody.Text000>
+
+左クリックで昇順・降順を切り替えます.右クリックで列を削除します.</JptMoody.Text000>
+  <!-- EN: ALL -->
+  <JptMoody.Text001>すべて</JptMoody.Text001>
+  <!-- EN: Add another skill column -->
+  <JptMoody.Text002>スキルの列を追加します</JptMoody.Text002>
+  <!-- EN: All -->
+  <JptMoody.Text003>すべて</JptMoody.Text003>
+  <!-- EN: All health conditions -->
+  <JptMoody.Text004>すべての健康状態</JptMoody.Text004>
+  <!-- EN: Animals -->
+  <JptMoody.Text005>動物</JptMoody.Text005>
+  <!-- EN: Attention Required -->
+  <JptMoody.Text006>要対処</JptMoody.Text006>
+  <!-- EN: Chronic -->
+  <JptMoody.Text007>慢性的な状態</JptMoody.Text007>
+  <!-- EN: Cold -->
+  <JptMoody.Text008>寒い</JptMoody.Text008>
+  <!-- EN: Colonist Temperature Comfort
+
+Extremely Hot
+Hot
+Comfortable
+Cold
+Freezing -->
+  <JptMoody.Text009>入植者にとっての快適な気温
+
+極めて暑い
+暑い
+快適
+寒い
+凍える寒さ</JptMoody.Text009>
+  <!-- EN: Colonists -->
+  <JptMoody.Text010>入植者</JptMoody.Text010>
+  <!-- EN: Comfortable -->
+  <JptMoody.Text011>快適</JptMoody.Text011>
+  <!-- EN: Condition -->
+  <JptMoody.Text012>健康状態</JptMoody.Text012>
+  <!-- EN: Conditions requiring attention such as fresh untended wounds, illness, heatstroke/frostbite, and the like. -->
+  <JptMoody.Text013>手当てされていない新しい傷,病気,熱中症や凍傷など,対処を必要とする健康状態です.</JptMoody.Text013>
+  <!-- EN: Conditions that do not require immediate attention. In terms of game logic, the inverse of 'Attention Required'. -->
+  <JptMoody.Text014>すぐに対処する必要のない健康状態です.ゲーム上の判定では「要対処」に該当しない状態を指します.</JptMoody.Text014>
+  <!-- EN: Current Job
+
+A red icon indicates the colonist is drafted or downed. -->
+  <JptMoody.Text015>現在の作業
+
+赤いアイコンは,入植者が徴兵中または倒れていることを示します.</JptMoody.Text015>
+  <!-- EN: Currently equipped weapon -->
+  <JptMoody.Text016>現在装備している武器</JptMoody.Text016>
+  <!-- EN: Default Sort Order -->
+  <JptMoody.Text017>元の並び順</JptMoody.Text017>
+  <!-- EN: Disabled when pawn picture is disabled -->
+  <JptMoody.Text018>ポートレートの表示が無効な場合は使用できません</JptMoody.Text018>
+  <!-- EN: Enable bleeding out warning -->
+  <JptMoody.Text019>出血死の警告を表示</JptMoody.Text019>
+  <!-- EN: Extremely Hot -->
+  <JptMoody.Text020>極めて暑い</JptMoody.Text020>
+  <!-- EN: Freezing -->
+  <JptMoody.Text021>凍える寒さ</JptMoody.Text021>
+  <!-- EN: Group Pawns By Map -->
+  <JptMoody.Text022>マップ別にまとめる</JptMoody.Text022>
+  <!-- EN: Group by thought group -->
+  <JptMoody.Text023>心情グループ別にまとめます</JptMoody.Text023>
+  <!-- EN: Group pawns by map/caravan -->
+  <JptMoody.Text024>マップ・キャラバン別にまとめる</JptMoody.Text024>
+  <!-- EN: Groups pawns by map or caravan. If unchecked, sorting will mix all pawns among maps and caravans -->
+  <JptMoody.Text025>マップやキャラバンごとにポーンをまとめます.無効にすると,所属するマップやキャラバンにかかわらず全員を並べ替えます</JptMoody.Text025>
+  <!-- EN: Health -->
+  <JptMoody.Text026>健康</JptMoody.Text026>
+  <!-- EN: Health Condition -->
+  <JptMoody.Text027>健康状態</JptMoody.Text027>
+  <!-- EN: Hot -->
+  <JptMoody.Text028>暑い</JptMoody.Text028>
+  <!-- EN: If enabled, displays the mood box behind the picture similar to the colonist bar -->
+  <JptMoody.Text029>有効にすると,入植者バーと同様にポートレートの背景に心情を表示します</JptMoody.Text029>
+  <!-- EN: If enabled, shows each pawn's ideology icon before their label -->
+  <JptMoody.Text030>有効にすると,名前の前にイデオロギーのアイコンを表示します</JptMoody.Text030>
+  <!-- EN: If enabled, shows each pawn's label in the pawn column. If disabled, enables Show Pawn Picture. -->
+  <JptMoody.Text031>有効にすると,ポーンの列に名前を表示します.無効にすると,ポートレートの表示が有効になります.</JptMoody.Text031>
+  <!-- EN: If enabled, shows each pawn's picture in the pawn column. If disabled, enables Show Pawn Label. -->
+  <JptMoody.Text032>有効にすると,ポーンの列にポートレートを表示します.無効にすると,ポーンの名前表示が有効になります.</JptMoody.Text032>
+  <!-- EN: If enabled, shows each pawn's profession as part of their label. If disabled, only the name is shown (if Show Pawn Label is enabled). -->
+  <JptMoody.Text033>有効にすると,名前とともに職業を表示します.無効にすると,名前だけを表示します.ポーンの名前表示が有効な場合に適用されます.</JptMoody.Text033>
+  <!-- EN: Immunity (Lethal)
+
+If immunity reaches 100% before severity reaches 100% the pawn becomes immune and severity begins to degrade until the condition is gone. -->
+  <JptMoody.Text034>免疫率 (致死性)
+
+重症度より先に免疫率が100%に達すると免疫を獲得します.その後は,病状がなくなるまで重症度が低下していきます.</JptMoody.Text034>
+  <!-- EN: Job -->
+  <JptMoody.Text035>作業</JptMoody.Text035>
+  <!-- EN: Jobs -->
+  <JptMoody.Text036>作業</JptMoody.Text036>
+  <!-- EN: Left click to sort -->
+  <JptMoody.Text037>左クリックで並べ替えます</JptMoody.Text037>
+  <!-- EN: Left click to sort by label. Default sort order can be restored from the right-click context menu. -->
+  <JptMoody.Text038>左クリックで名前順に並べ替えます.右クリックメニューから元の並び順へ戻せます.</JptMoody.Text038>
+  <!-- EN: Left click to toggle between ascending and descending sort. Right click to remove. -->
+  <JptMoody.Text039>左クリックで昇順・降順を切り替えます.右クリックで列を削除します.</JptMoody.Text039>
+  <!-- EN: Left click to toggle between ascending and descending sort. Right click to switch between overall mood and individual needs
+
+When viewing overall mood the colonists are sorted by how close they are to their respective breaking thresholds, not overall mood value.  -->
+  <JptMoody.Text040>左クリックで昇順・降順を切り替えます.右クリックで心情全体と個別の欲求を切り替えます.
+
+心情全体を表示している場合は,心情の値そのものではなく,それぞれの精神崩壊のしきい値にどれだけ近いかで入植者を並べ替えます. </JptMoody.Text040>
+  <!-- EN: List individual thoughts -->
+  <JptMoody.Text041>心情要因を個別に表示します</JptMoody.Text041>
+  <!-- EN: Mood -->
+  <JptMoody.Text042>心情</JptMoody.Text042>
+  <!-- EN: Mood adjustment for this thought -->
+  <JptMoody.Text043>この心情要因による心情の変化量</JptMoody.Text043>
+  <!-- EN: Number of colonists with a thought from this group -->
+  <JptMoody.Text044>このグループに属する心情要因を持つ入植者の人数</JptMoody.Text044>
+  <!-- EN: Number of colonists with this thought -->
+  <JptMoody.Text045>この心情要因を持つ入植者の人数</JptMoody.Text045>
+  <!-- EN: Opacity:  {0}% -->
+  <JptMoody.Text046>不透明度:  {0}%</JptMoody.Text046>
+  <!-- EN: Pawns -->
+  <JptMoody.Text047>ポーン</JptMoody.Text047>
+  <!-- EN: Prisoners -->
+  <JptMoody.Text048>囚人</JptMoody.Text048>
+  <!-- EN: Remember size and position -->
+  <JptMoody.Text049>サイズと位置を記憶</JptMoody.Text049>
+  <!-- EN: Remember size and position between sessions -->
+  <JptMoody.Text050>ゲームを終了してもウィンドウのサイズと位置を記憶します</JptMoody.Text050>
+  <!-- EN: Reset Lessons -->
+  <JptMoody.Text051>チュートリアルをリセット</JptMoody.Text051>
+  <!-- EN: Severity (Lethal)
+
+If severity reaches 100% before immunity reaches 100% the pawn will die. -->
+  <JptMoody.Text052>重症度 (致死性)
+
+免疫率より先に重症度が100%に達すると,ポーンは死亡します.</JptMoody.Text052>
+  <!-- EN: Show Pawn Ideology -->
+  <JptMoody.Text053>イデオロギーを表示</JptMoody.Text053>
+  <!-- EN: Show Pawn Label -->
+  <JptMoody.Text054>ポーンの名前を表示</JptMoody.Text054>
+  <!-- EN: Show Pawn Picture -->
+  <JptMoody.Text055>ポートレートを表示</JptMoody.Text055>
+  <!-- EN: Show Pawn Picture Mood -->
+  <JptMoody.Text056>ポートレートに心情を表示</JptMoody.Text056>
+  <!-- EN: Show Pawn Profession -->
+  <JptMoody.Text057>職業を表示</JptMoody.Text057>
+  <!-- EN: Show sleep when sleeping -->
+  <JptMoody.Text058>睡眠中は睡眠欲求を表示</JptMoody.Text058>
+  <!-- EN: Skills -->
+  <JptMoody.Text059>スキル</JptMoody.Text059>
+  <!-- EN: Smaller text, icons, and row height to fit more on the screen. Shows ~50% more rows for the same height. -->
+  <JptMoody.Text060>文字・アイコン・行の高さを小さくし,より多くの情報を表示します.同じ高さで約50%多くの行を表示できます.</JptMoody.Text060>
+  <!-- EN: Status of conditions requiring attention. They are either lethal or can be tended by another colonist. -->
+  <JptMoody.Text061>対処を必要とする健康状態です.命にかかわるもの,またはほかの入植者による手当てが可能なものが対象です.</JptMoody.Text061>
+  <!-- EN: Stop grouping pawns -->
+  <JptMoody.Text062>グループ分けを解除</JptMoody.Text062>
+  <!-- EN: Summary -->
+  <JptMoody.Text063>概要</JptMoody.Text063>
+  <!-- EN: Temperature -->
+  <JptMoody.Text064>気温</JptMoody.Text064>
+  <!-- EN: Tend Status
+
+Untended conditions heal more slowly and some can degrade into worse conditions. -->
+  <JptMoody.Text065>手当ての状態
+
+手当てされていない傷や病気は治るのが遅く,さらに悪化するものもあります.</JptMoody.Text065>
+  <!-- EN: Thought -->
+  <JptMoody.Text066>心情要因</JptMoody.Text066>
+  <!-- EN: Thought Group -->
+  <JptMoody.Text067>心情グループ</JptMoody.Text067>
+  <!-- EN: Thought Groups -->
+  <JptMoody.Text068>心情グループ</JptMoody.Text068>
+  <!-- EN: Thoughts -->
+  <JptMoody.Text069>心情要因</JptMoody.Text069>
+  <!-- EN: Tiny Mode -->
+  <JptMoody.Text070>小型表示</JptMoody.Text070>
+  <!-- EN: Tiny Mode Scale:  -->
+  <JptMoody.Text071>小型表示の倍率: </JptMoody.Text071>
+  <!-- EN: Toggle between colonist, prisoner, and animal modes -->
+  <JptMoody.Text072>入植者・囚人・動物の表示を切り替えます</JptMoody.Text072>
+  <!-- EN: Total mood bonus across all colonists -->
+  <JptMoody.Text073>全入植者の心情上昇量の合計</JptMoody.Text073>
+  <!-- EN: Total mood penalty across all colonists -->
+  <JptMoody.Text074>全入植者の心情低下量の合計</JptMoody.Text074>
+  <!-- EN: When bleeding out, a warning will be displayed in place of the mood/need in the Summary view. Clicking the warning will remove it until the next bleeding out event. -->
+  <JptMoody.Text075>出血死の危険があるとき,概要画面の心情・欲求の代わりに警告を表示します.クリックすると警告を消せますが,再び出血死の危険が生じると表示されます.</JptMoody.Text075>
+  <!-- EN: When sleeping (not just resting) the sleep need will override the selected need in the summary view -->
+  <JptMoody.Text076>単に横になっているのではなく眠っている間は,概要画面で選択した欲求の代わりに睡眠欲求を表示します</JptMoody.Text076>
+</LanguageData>
