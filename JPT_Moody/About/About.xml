@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ModMetaData>
+  <name>[JP Local] Moody 日本語翻訳</name>
+  <author>jpt</author>
+  <packageId>jpt.giantspacehamster.moody</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>GiantSpaceHamster.Moody</packageId>
+      <displayName>Moody</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/826998327</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>giantspacehamster.moody</li>
+    <li>brrainz.harmony</li>
+    <li>twogameinfo.jplocal</li>
+  </loadAfter>
+  <description>Moodyの画面・設定・ツールチップ・チュートリアル・ショートカットを日本語化します.
+原作に翻訳キーがない表示は補助DLLで対応します. 設定の保存名やDef識別子は変更しません.
+現在の1.7環境では原作の1.6版DLLが選択されます. 原作の1.7対応を保証するものではありません. 本体・Workshop原本・設定・セーブは変更しません.
+本日本語翻訳MODと表示補助コードは, ChatGPT 6.1 Solに作成させたものです.
+独自作成部分はCC0 1.0 Universalです. 原作の英語原文など第三者の権利は対象外です. 詳細は同梱NOTICEとLICENSEを参照してください.</description>
+</ModMetaData>
